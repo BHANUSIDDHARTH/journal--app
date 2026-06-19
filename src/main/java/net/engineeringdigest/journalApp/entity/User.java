@@ -7,11 +7,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "users")
+@Document(collection = "Users")
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,9 +23,10 @@ public class User {
     private ObjectId id;
     @Indexed(unique = true)
     @NonNull
+    @Field("username")
     private String userName;
     private String email;
-    private boolean sentimentAnalysis;
+    private boolean SA;
     @NonNull
     private String password;
     @DBRef
