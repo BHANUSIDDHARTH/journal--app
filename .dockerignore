@@ -1,13 +1,9 @@
-# Maven build output
-target/
-
 # IntelliJ
 .idea/
 *.iml
 
 # Git
 .git/
-.gitignore
 
 # Logs
 *.log
@@ -27,16 +23,3 @@ Thumbs.db
 # Environment files
 .env
 .env.*
-
-# Maven wrapper logs
-.mvn/wrapper/maven-wrapper.jar
-
-# Test reports
-surefire-reports/
-failsafe-reports/
-
-# Docker
-docker-compose.override.yml
-
-# Node modules (if you add frontend later)
-node_modules/
