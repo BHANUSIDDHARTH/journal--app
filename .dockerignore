@@ -1,7 +1,42 @@
+# Maven build output
 target/
-.idea/
-.git/
-*.log
 
-journalApp.log
-journalApp-*.log
+# IntelliJ
+.idea/
+*.iml
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment files
+.env
+.env.*
+
+# Maven wrapper logs
+.mvn/wrapper/maven-wrapper.jar
+
+# Test reports
+surefire-reports/
+failsafe-reports/
+
+# Docker
+docker-compose.override.yml
+
+# Node modules (if you add frontend later)
+node_modules/
