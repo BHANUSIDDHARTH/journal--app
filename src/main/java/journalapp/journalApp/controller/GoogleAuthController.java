@@ -1,5 +1,6 @@
 package journalapp.journalApp.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import journalapp.journalApp.entity.User;
 import journalapp.journalApp.repository.UserRepository;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -47,10 +49,10 @@ public class GoogleAuthController {
     private JwtUtil jwtUtil;
 
     private static final String REDIRECT_URI =
-            "http://13.51.199.138:8083/journalapp/auth/google/callback";
+            "http://ec2-13-51-199-138.eu-north-1.compute.amazonaws.com:8083/journalapp/auth/google/callback";
 
     @GetMapping("/login")
-    public ResponseEntity<?> googleLogin() {
+    public void googleLogin(HttpServletResponse response) throws IOException {
 
         String googleAuthUrl =
                 "https://accounts.google.com/o/oauth2/v2/auth?" +
@@ -61,10 +63,7 @@ public class GoogleAuthController {
                         "&access_type=offline" +
                         "&prompt=consent";
 
-        Map<String, String> response = new HashMap<>();
-        response.put("url", googleAuthUrl);
-
-        return ResponseEntity.ok(response);
+        response.sendRedirect(googleAuthUrl);
     }
 
     @GetMapping("/callback")
