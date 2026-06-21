@@ -46,13 +46,16 @@ public class GoogleAuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    private static final String REDIRECT_URI =
+            "http://13.51.199.138:8083/journalapp/auth/google/callback";
+
     @GetMapping("/login")
     public ResponseEntity<?> googleLogin() {
 
         String googleAuthUrl =
                 "https://accounts.google.com/o/oauth2/v2/auth?" +
                         "client_id=" + clientId +
-                        "&redirect_uri=http://localhost:8083/journalapp/auth/google/callback" +
+                        "&redirect_uri=" + REDIRECT_URI +
                         "&response_type=code" +
                         "&scope=email%20profile" +
                         "&access_type=offline" +
@@ -75,8 +78,7 @@ public class GoogleAuthController {
             params.add("code", code);
             params.add("client_id", clientId);
             params.add("client_secret", clientSecret);
-            params.add("redirect_uri",
-                    "http://localhost:8083/journalapp/auth/google/callback");
+            params.add("redirect_uri", REDIRECT_URI);
             params.add("grant_type", "authorization_code");
 
             HttpHeaders headers = new HttpHeaders();
